@@ -17,27 +17,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+
+
 Route::group(
     [
         'prefix' => 'dashboard',
         'as'     => 'dashboard.',
-        'middleware' => [ 'auth', 'verified' ]
+        'middleware' => [ 'auth']
     ],
     function () {
 
 
         Route::get( '/', [ Dashboard\DashboardController::class, 'index' ] );
-//        Route::get( '/gallery', [ Dashboard\GalleryController::class, 'index' ] );
-//        Route::get( '/widgets', [ Dashboard\WidgetsController::class, 'index' ] );
-//        Route::get( '/conversion', [ Dashboard\ConversionController::class, 'index' ] );
-//        Route::get( '/statistic', [ Dashboard\StatisticController::class, 'index' ] );
-//        Route::get( '/upgrade', [ Dashboard\UpgradeController::class, 'index' ] );
-//        Route::get( '/guide', [ Dashboard\GuideController::class, 'index' ] );
-
+        Route::resource( '/property',  Dashboard\PropertyController::class);
 
     }
 );
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
