@@ -34,6 +34,7 @@ Route::group(
         Route::get( '/', [ Dashboard\DashboardController::class, 'index' ] );
         Route::resource( '/property',  Dashboard\PropertyController::class);
 
+
     }
 );
 

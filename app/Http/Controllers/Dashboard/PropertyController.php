@@ -14,9 +14,9 @@ class PropertyController extends Controller
      */
     public function index()
     {
+        $properties =  Property::all();
 
-
-        return view('admin.pages.index');
+        return view('admin.property.properties')->with('properties',  $properties);;
     }
 
     /**
@@ -28,6 +28,7 @@ class PropertyController extends Controller
     {
 
         return view('admin.property.property-create');
+
     }
 
     /**
@@ -38,7 +39,17 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+//        $input = $request->all();
+//        Property::create($input);
+//        return redirect('admin.property.properties')->with('flash_message', '  Property Addedd!');
+
+
+        Property::create($request->all());
+
+        return redirect()->route('dashboard.property.create')
+                         ->with('success','Product created successfully.');
+
     }
 
     /**
@@ -58,9 +69,10 @@ class PropertyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Property $property)
     {
-        //
+
+        return view('admin.property.property-edit', compact('property'));
     }
 
     /**
@@ -72,7 +84,10 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $property = Property::find($id);
+        $input = $request->all();
+        $property->update($input);
+        return redirect('Property')->with('flash_message', 'Property Updated!');
     }
 
     /**
@@ -83,6 +98,7 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Property::destroy($id);
+        return redirect('admin.property.properties')->with('flash_message', 'Property deleted!');
     }
 }
