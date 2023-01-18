@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Dashboard;
+use App\Http\Controllers\FirebaseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,14 +30,19 @@ Route::group(
         'middleware' => [ 'auth']
     ],
     function () {
-
-
         Route::get( '/', [ Dashboard\DashboardController::class, 'index' ] );
-        Route::resource( '/property',  Dashboard\PropertyController::class);
+        Route::resource( '/properties',  Dashboard\PropertyController::class);
 
 
     }
 );
 
 Auth::routes();
+
+
+
+
+
+
+
 

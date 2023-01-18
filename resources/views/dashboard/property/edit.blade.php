@@ -1,9 +1,9 @@
-@extends('admin.layouts.master')
+@extends('dashboard.layouts.master')
 @section('title')
    Property create
 @endsection
 <!-- Left Panel -->
-@include('admin.parts.sidebar')
+@include('dashboard.parts.sidebar')
 <!-- /#left-panel -->
 <!-- Right Panel -->
 @section('content')

@@ -1,9 +1,9 @@
-@extends('admin.layouts.master')
+@extends('dashboard.layouts.master')
 @section('title')
     Dashboard
 @endsection
 <!-- Left Panel -->
-@include('admin.parts.sidebar')
+@include('dashboard.parts.sidebar')
 <!-- /#left-panel -->
 <!-- Right Panel -->
 @section('content')
@@ -87,6 +87,6 @@
     <div class="clearfix"></div>
     <!-- Footer -->
 
-    <!-- /#right-panel -->
+<!-- /#right-panel -->
 @endsection
 

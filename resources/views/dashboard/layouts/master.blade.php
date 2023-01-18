@@ -1,11 +1,11 @@
-@include('admin.parts.header')
+@include('dashboard.parts.header')
 <!-- Left Panel -->
-@include('admin.parts.sidebar')
+@include('dashboard.parts.sidebar')
 <!-- /#left-panel -->
 <!-- Right Panel -->
 <div    id="right-panel"  class="right-panel">
     <!-- Header-->
-    @include('admin.parts.top-bar')
+    @include('dashboard.parts.top-bar')
 
     <!-- /#header -->
     <!-- Content -->
@@ -13,9 +13,9 @@
     @section('content')
     @show
 
-    @include('admin.parts.footer')
+    @include('dashboard.parts.footer')
     <!-- /.site-footer -->
 </div>
 <!-- /#right-panel -->
 
-@include('admin.parts.footer-scripts')
+@include('dashboard.parts.footer-scripts')

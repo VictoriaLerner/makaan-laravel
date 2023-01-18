@@ -8,7 +8,8 @@
                 <li class="menu-title">UI elements</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Properties</a>
-                    <ul class="sub-menu children dropdown-menu">                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i><a href="{{route('dashboard.properties.index')}}">All properties </a></li>
                         <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
                         <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
 

@@ -1,9 +1,9 @@
-@extends('admin.layouts.master')
+@extends('dashboard.layouts.master')
 @section('title')
    Property create
 @endsection
 <!-- Left Panel -->
-@include('admin.parts.sidebar')
+@include('dashboard.parts.sidebar')
 <!-- /#left-panel -->
 <!-- Right Panel -->
 @section('content')
@@ -36,7 +36,7 @@
 
                 <div class="card-body">
 
-                    <form action=" {{route('dashboard.property.store')}}" method="POST">
+                    <form action="{{route('dashboard.properties.store')}}" method="POST">
                         @csrf
 
                         <div class="row">

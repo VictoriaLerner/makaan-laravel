@@ -16,7 +16,7 @@ class PropertyController extends Controller
     {
         $properties =  Property::all();
 
-        return view('admin.property.properties')->with('properties',  $properties);;
+        return view('dashboard.property.properties')->with('properties',  $properties);;
     }
 
     /**
@@ -27,7 +27,7 @@ class PropertyController extends Controller
     public function create()
     {
 
-        return view('admin.property.property-create');
+        return view('dashboard.property.create');
 
     }
 
@@ -42,12 +42,12 @@ class PropertyController extends Controller
 
 //        $input = $request->all();
 //        Property::create($input);
-//        return redirect('admin.property.properties')->with('flash_message', '  Property Addedd!');
+//        return redirect('dashboard.property.properties')->with('flash_message', '  Property Addedd!');
 
 
         Property::create($request->all());
 
-        return redirect()->route('dashboard.property.create')
+        return redirect()->route('dashboard.properties.create')
                          ->with('success','Product created successfully.');
 
     }
@@ -72,7 +72,7 @@ class PropertyController extends Controller
     public function edit(Property $property)
     {
 
-        return view('admin.property.property-edit', compact('property'));
+        return view('dashboard.property.property-edit', compact('property'));
     }
 
     /**
@@ -99,6 +99,6 @@ class PropertyController extends Controller
     public function destroy($id)
     {
         Property::destroy($id);
-        return redirect('admin.property.properties')->with('flash_message', 'Property deleted!');
+        return redirect('dashboard.property.properties')->with('flash_message', 'Property deleted!');
     }
 }
