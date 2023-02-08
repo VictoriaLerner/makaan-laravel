@@ -20,85 +20,81 @@
 
             <div class="card">
                 <div class="card-header"> Property edit</div>
-                @if($errors->any())
-
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-
-                                <li>{{ $error }}</li>
-
-                            @endforeach
-                        </ul>
+                @if(session('status'))
+                    <div class="alert alert-success mb-1 mt-1">
+                        {{ session('status') }}
                     </div>
-
                 @endif
 
                 <div class="card-body">
 
-                    <form action=" {{route('dashboard.property.store')}}" method="POST">
+                    <form action="{{ isset($property) ? route('dashboard.properties.update', $property) : route('dashboard.properties.store')}}  " method="POST">
                         @csrf
-
+                        @method('PUT')
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Name:</strong>
-                                    <input type="text" name="name" class="form-control" >
+                                    <input type="text" value="{{ $property->name }}" name="name" class="form-control" >
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Description:</strong>
-                                    <textarea class="form-control" style="height:150px" name="description" ></textarea>
+                                    <textarea  class="form-control" style="height:150px" name="description" >
+                                        {{ $property->description }}
+
+                                    </textarea>
                                 </div>
                             </div>
 
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Price:</strong>
-                                    <input type="text" name="price" class="form-control" >
+                                    <input type="text"  value="{{ $property->price }}" name="price" class="form-control" >
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Property type:</strong>
-                                    <input type="text" name="property_type" class="form-control" >
+                                    <input value="{{ $property->property_type }}" type="text" name="property_type" class="form-control" >
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Bedrooms count:</strong>
-                                    <input type="text" name="bedrooms_count" class="form-control" >
+                                    <input value="{{ $property->bedrooms_count }}" type="text" name="bedrooms_count" class="form-control" >
+
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Bathrooms count:</strong>
-                                    <input type="text" name="bathrooms_count" class="form-control" >
+                                    <input  value="{{ $property->bathrooms_count }}" type="text" name="bathrooms_count" class="form-control" >
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Living area:</strong>
-                                    <input type="text" name="living_area" class="form-control" >
+                                    <input  value="{{ $property->living_area }}" type="text" name="living_area" class="form-control" >
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Full address:</strong>
-                                    <input type="text" name="full_address" class="form-control" >
+                                    <input  value="{{ $property->full_address }}" type="text" name="full_address" class="form-control" >
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Keywords:</strong>
-                                    <input type="text" name="keywords" class="form-control" >
+                                    <input value="{{ $property->keywords }}" type="text" name="keywords" class="form-control" >
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Meta description:</strong>
-                                    <textarea class="form-control" style="height:80px" name="meta_description" ></textarea>
+                                    <textarea class="form-control" style="height:80px" name="meta_description" >{{ $property->meta_description }}</textarea>
                                 </div>
                             </div>
 

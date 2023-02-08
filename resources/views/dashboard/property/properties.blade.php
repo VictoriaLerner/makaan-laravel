@@ -16,14 +16,36 @@
     <div style="min-height: 80vh"  class="content">
         <!-- Animated -->
         <div class="animated fadeIn">
-            <div class=" col-md-12">
-                <div class="card ov-h">
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
+
+            <div class=" row">
+
+                @foreach ($properties as $property)
+
+                <div class="  col-lg-6 me-lg-5 mb-5">
                     <div class="card-body bg-flat-color-2">
-                        <div id="flotBarChart" class="float-chart ml-4 mr-4"></div>
-                        <h1 class="text-white">Hello {{ auth()->user()->name }}!</h1>
+                        <div id="flotBarChart" class="float-chart "></div>
+                        <h3 class="text-white">{{ $property->name }}</h3>
+
                     </div>
-                    <div id="cellPaiChart" class="float-chart"></div>
+                    <div class="bg-white card-body" >
+                        <div> {{ $property->description }}</div>
+                        <div> Price: {{ $property->price }}</div>
+
+                        <form action="{{ route('dashboard.properties.destroy',$property->id) }}" method="Post">
+                            <a class="btn btn-primary" href="{{ route('dashboard.properties.edit',$property->id) }}">Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+
+                    </div>
                 </div><!-- /.card -->
+                @endforeach
             </div>
 
             <div class="modal fade none-border" id="event-modal">

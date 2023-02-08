@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
+use App\Medias;
 use App\Models\Property;
 use App\Http\Controllers\Controller;
+use App\Services\MediaService;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -12,8 +14,10 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Property  $property)
     {
+
+//        $properties =  $property->latest( 'created_at' )->with('user')->paginate( $this->per_page ?? ( 10 ) );
         $properties =  Property::all();
 
         return view('dashboard.property.properties')->with('properties',  $properties);;
@@ -72,7 +76,7 @@ class PropertyController extends Controller
     public function edit(Property $property)
     {
 
-        return view('dashboard.property.property-edit', compact('property'));
+        return view('dashboard.property.edit', compact('property'));
     }
 
     /**
@@ -87,7 +91,10 @@ class PropertyController extends Controller
         $property = Property::find($id);
         $input = $request->all();
         $property->update($input);
-        return redirect('Property')->with('flash_message', 'Property Updated!');
+
+        return redirect()->route('dashboard.properties.index')->with('success','Property has been updated successfully');
+
+
     }
 
     /**
@@ -99,6 +106,22 @@ class PropertyController extends Controller
     public function destroy($id)
     {
         Property::destroy($id);
-        return redirect('dashboard.property.properties')->with('flash_message', 'Property deleted!');
+
+
+        return redirect()->route('dashboard.properties.index')->with('success','Property has been deleted! ');
+
     }
+
+
+
+
+//    public function uploadImg(MediaService $service){
+//
+//        // if ( isset( $request->tiny_uploader ) ) {
+//        $imgID = $service->uploadImg('file');
+//        $media = Medias::where('id', $imgID)->first();
+//        return json_encode( [ 'location' => url( $media->path ) ] );
+//
+//        // }
+//    }
 }

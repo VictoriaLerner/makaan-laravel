@@ -19,7 +19,7 @@
 
 
             <div class="card">
-                <div class="card-header"> Property edit</div>
+                <div class="card-header"> Property create</div>
                 @if($errors->any())
 
                     <div class="alert alert-danger">
@@ -36,7 +36,7 @@
 
                 <div class="card-body">
 
-                    <form action="{{route('dashboard.properties.store')}}" method="POST">
+                    <form action="{{route('dashboard.properties.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row">
@@ -101,6 +101,14 @@
                                     <textarea class="form-control" style="height:80px" name="meta_description" ></textarea>
                                 </div>
                             </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Image:</strong>
+                                    <input type="file"  id="image" name="image" class="form-control" >
+                                </div>
+                            </div>
+
 
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>

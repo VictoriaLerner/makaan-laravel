@@ -10,7 +10,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Properties</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-puzzle-piece"></i><a href="{{route('dashboard.properties.index')}}">All properties </a></li>
-                        <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
+                        <li><i class="fa fa-id-badge"></i><a href="{{route('dashboard.properties.create')}}">Create new property </a></li>
                         <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
 
                         <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Cards</a></li>

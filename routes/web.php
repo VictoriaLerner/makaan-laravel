@@ -32,7 +32,8 @@ Route::group(
     function () {
         Route::get( '/', [ Dashboard\DashboardController::class, 'index' ] );
         Route::resource( '/properties',  Dashboard\PropertyController::class);
-
+//        Route::post('/properties-upload-img', 'Dashboard\PropertyController@uploadImg')
+//             ->name('properties.upload.img');
 
     }
 );
