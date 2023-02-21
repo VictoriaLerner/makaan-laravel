@@ -26,13 +26,16 @@
 
                 @foreach ($properties as $property)
 
-                <div class="  col-lg-6 me-lg-5 mb-5">
-                    <div class="card-body bg-flat-color-2">
+                <div class="  col-lg-3 me-lg-5 mb-5">
+                    <div class="card-body bg-white ">
+
+
                         <div id="flotBarChart" class="float-chart "></div>
-                        <h3 class="text-white">{{ $property->name }}</h3>
+                        <h3 class="text-dark">{{ $property->name }}</h3>
 
                     </div>
                     <div class="bg-white card-body" >
+                        <img src="{{ $property->getFirstMediaUrl()  }}" alt="">
                         <div> {{ $property->description }}</div>
                         <div> Price: {{ $property->price }}</div>
 

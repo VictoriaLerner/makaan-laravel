@@ -49,7 +49,9 @@ class PropertyController extends Controller
 //        return redirect('dashboard.property.properties')->with('flash_message', '  Property Addedd!');
 
 
-        Property::create($request->all());
+       $property =  Property::create($request->all());
+
+        $property->addMediaFromRequest('image')->toMediaCollection();
 
         return redirect()->route('dashboard.properties.create')
                          ->with('success','Product created successfully.');
@@ -92,6 +94,11 @@ class PropertyController extends Controller
         $input = $request->all();
         $property->update($input);
 
+        if($request->hasFile('image')){
+            $property->clearMediaCollection();
+            $property->addMediaFromRequest('image')->toMediaCollection();
+        }
+
         return redirect()->route('dashboard.properties.index')->with('success','Property has been updated successfully');
 
 
@@ -115,13 +122,13 @@ class PropertyController extends Controller
 
 
 
-//    public function uploadImg(MediaService $service){
-//
-//        // if ( isset( $request->tiny_uploader ) ) {
-//        $imgID = $service->uploadImg('file');
-//        $media = Medias::where('id', $imgID)->first();
-//        return json_encode( [ 'location' => url( $media->path ) ] );
-//
-//        // }
-//    }
+    public function uploadImg(MediaService $service){
+
+        // if ( isset( $request->tiny_uploader ) ) {
+        $imgID = $service->uploadImg('file');
+        $media = Medias::where('id', $imgID)->first();
+        return json_encode( [ 'location' => url( $media->path ) ] );
+
+        // }
+    }
 }

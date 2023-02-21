@@ -28,7 +28,7 @@
 
                 <div class="card-body">
 
-                    <form action="{{ isset($property) ? route('dashboard.properties.update', $property) : route('dashboard.properties.store')}}  " method="POST">
+                    <form action="{{ isset($property) ? route('dashboard.properties.update', $property) : route('dashboard.properties.store')}}  " method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -95,6 +95,13 @@
                                 <div class="form-group">
                                     <strong>Meta description:</strong>
                                     <textarea class="form-control" style="height:80px" name="meta_description" >{{ $property->meta_description }}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Image:</strong>
+                                    <input type="file"  id="image" name="image" class="form-control" >
                                 </div>
                             </div>
 
