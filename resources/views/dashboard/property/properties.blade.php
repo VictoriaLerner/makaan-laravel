@@ -36,7 +36,10 @@
 
                     </div>
                     <div class="bg-white card-body" >
-                        <img src="{{ $property->getFirstMediaUrl('property-img')  }}" alt="">
+
+                        @if($property->getFirstMediaUrl('image'))
+                        <img src="{{ $property->getFirstMediaUrl('image' , 'thumb') }}" alt="">
+                        @endif
                         <div> {{ $property->description }}</div>
                         <div> Price: {{ $property->price }}</div>
 

@@ -43,69 +43,69 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Name:</strong>
-                                    <input type="text" name="name" class="form-control" >
+                                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" >
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Description:</strong>
-                                    <textarea class="form-control" style="height:150px" name="description" ></textarea>
+                                    <textarea class="form-control" style="height:150px" name="description" >{{ old('description') }}</textarea>
                                 </div>
                             </div>
 
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Price:</strong>
-                                    <input type="text" name="price" class="form-control" >
+                                    <input type="text" name="price" class="form-control" value="{{ old('price') }}" >
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Property type:</strong>
-                                    <input type="text" name="property_type" class="form-control" >
+                                    <input type="text" name="property_type" class="form-control"  value="{{ old('property_type') }}" >
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Bedrooms count:</strong>
-                                    <input type="text" name="bedrooms_count" class="form-control" >
+                                    <input type="text" name="bedrooms_count" class="form-control"  value="{{ old('bedrooms_count') }}" >
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Bathrooms count:</strong>
-                                    <input type="text" name="bathrooms_count" class="form-control" >
+                                    <input type="text" name="bathrooms_count" class="form-control" value="{{ old('bathrooms_count') }}" >
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Living area:</strong>
-                                    <input type="text" name="living_area" class="form-control" >
+                                    <input type="text" name="living_area" class="form-control" value="{{ old('living_area') }}" >
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Full address:</strong>
-                                    <input type="text" name="full_address" class="form-control" >
+                                    <input type="text" name="full_address" class="form-control" value="{{ old('full_address') }}" >
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Keywords:</strong>
-                                    <input type="text" name="keywords" class="form-control" >
+                                    <input type="text" name="keywords" class="form-control" value="{{ old('keywords') }}"  >
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Meta description:</strong>
-                                    <textarea class="form-control" style="height:80px" name="meta_description" ></textarea>
+                                    <textarea class="form-control" style="height:80px" name="meta_description" > {{ old('meta_description') }}</textarea>
                                 </div>
                             </div>
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Image:</strong>
-                                    <input type="file"  id="image" name="image" class="form-control" >
+                                    <input type="file"  id="image" name="image" class="form-control"  >
                                 </div>
                             </div>
 

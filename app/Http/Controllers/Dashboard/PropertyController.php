@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePropertyRequest;
+use Spatie\MediaLibrary\Support\MediaStream;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class PropertyController extends Controller
 {
@@ -18,10 +20,14 @@ class PropertyController extends Controller
     public function index(Property  $property)
     {
 
+
 //        $properties =  $property->latest( 'created_at' )->with('user')->paginate( $this->per_page ?? ( 10 ) );
         $properties =  Property::all();
 
-        return view('dashboard.property.properties')->with('properties',  $properties);;
+
+
+
+        return view('dashboard.property.properties')->with('properties',  $properties , );;
     }
 
     /**
@@ -52,7 +58,7 @@ class PropertyController extends Controller
 
        $property =  Property::create($request->validated());
         if($request->hasFile('image')) {
-            $property->addMediaFromRequest( 'image' )->toMediaCollection('property-img');
+            $property->addMediaFromRequest( 'image' )->toMediaCollection('image');
         }
         return redirect()->route('dashboard.properties.index')->with('success','Property has been updated successfully');
 
@@ -95,8 +101,7 @@ class PropertyController extends Controller
         $property->update($input);
 
         if($request->hasFile('image')){
-            $property->clearMediaCollection('property-img');
-            $property->addMediaFromRequest('image')->toMediaCollection('property-img');
+            $property->addMediaFromRequest('image')->toMediaCollection('image');
         }
 
         return redirect()->route('dashboard.properties.index')->with('success','Property has been updated successfully');
@@ -119,8 +124,18 @@ class PropertyController extends Controller
 
     }
 
+public function download( $id ) {
+
+    $property = Property::findOrFail($id);
+    $media =   $property->getFirstMedia('image');
+    return   $media;
+}
+    public function downloads() {
 
 
+//        $media =   Media::where('collection_name' , 'image')->get();
+        return   MediaStream::create('downloads.zip')->addMedia(Media::all());
+    }
 
 //    public function uploadImg(MediaService $service){
 //
