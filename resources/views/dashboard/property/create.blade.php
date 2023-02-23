@@ -19,7 +19,7 @@
 
 
             <div class="card">
-                <div class="card-header"> Property create</div>
+                <div class="card-header"> Create property </div>
                 @if($errors->any())
 
                     <div class="alert alert-danger">

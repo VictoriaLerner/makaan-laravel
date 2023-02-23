@@ -6,6 +6,7 @@ use App\Models\Property;
 use App\Http\Controllers\Controller;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreatePropertyRequest;
 
 class PropertyController extends Controller
 {
@@ -41,7 +42,7 @@ class PropertyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePropertyRequest $request)
     {
 
 //        $input = $request->all();
@@ -49,12 +50,11 @@ class PropertyController extends Controller
 //        return redirect('dashboard.property.properties')->with('flash_message', '  Property Addedd!');
 
 
-       $property =  Property::create($request->all());
-
-        $property->addMediaFromRequest('image')->toMediaCollection();
-
-        return redirect()->route('dashboard.properties.create')
-                         ->with('success','Product created successfully.');
+       $property =  Property::create($request->validated());
+        if($request->hasFile('image')) {
+            $property->addMediaFromRequest( 'image' )->toMediaCollection('property-img');
+        }
+        return redirect()->route('dashboard.properties.index')->with('success','Property has been updated successfully');
 
     }
 
@@ -95,8 +95,8 @@ class PropertyController extends Controller
         $property->update($input);
 
         if($request->hasFile('image')){
-            $property->clearMediaCollection();
-            $property->addMediaFromRequest('image')->toMediaCollection();
+            $property->clearMediaCollection('property-img');
+            $property->addMediaFromRequest('image')->toMediaCollection('property-img');
         }
 
         return redirect()->route('dashboard.properties.index')->with('success','Property has been updated successfully');
@@ -122,13 +122,13 @@ class PropertyController extends Controller
 
 
 
-    public function uploadImg(MediaService $service){
-
-        // if ( isset( $request->tiny_uploader ) ) {
-        $imgID = $service->uploadImg('file');
-        $media = Medias::where('id', $imgID)->first();
-        return json_encode( [ 'location' => url( $media->path ) ] );
-
-        // }
-    }
+//    public function uploadImg(MediaService $service){
+//
+//        // if ( isset( $request->tiny_uploader ) ) {
+//        $imgID = $service->uploadImg('file');
+//        $media = Medias::where('id', $imgID)->first();
+//        return json_encode( [ 'location' => url( $media->path ) ] );
+//
+//        // }
+//    }
 }

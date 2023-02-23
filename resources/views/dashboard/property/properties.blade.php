@@ -21,6 +21,7 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
+                <a class="btn btn-primary mb-5" href="{{ route('dashboard.properties.create') }}">Add new property</a>
 
             <div class=" row">
 
@@ -35,7 +36,7 @@
 
                     </div>
                     <div class="bg-white card-body" >
-                        <img src="{{ $property->getFirstMediaUrl()  }}" alt="">
+                        <img src="{{ $property->getFirstMediaUrl('property-img')  }}" alt="">
                         <div> {{ $property->description }}</div>
                         <div> Price: {{ $property->price }}</div>
 
