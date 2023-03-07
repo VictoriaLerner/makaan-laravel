@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreatePropertyRequest;
 use Spatie\MediaLibrary\Support\MediaStream;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-
+use App\Models\Category;
 class PropertyController extends Controller
 {
     /**
@@ -37,8 +37,9 @@ class PropertyController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
 
-        return view('dashboard.property.create');
+        return view('dashboard.property.create', compact('categories'));
 
     }
 
@@ -84,7 +85,12 @@ class PropertyController extends Controller
     public function edit(Property $property)
     {
 
-        return view('dashboard.property.edit', compact('property'));
+
+        $categories = Category::all();
+
+
+
+        return view('dashboard.property.edit', compact('property' , 'categories'));
     }
 
     /**

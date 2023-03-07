@@ -18,7 +18,7 @@ class Property extends Model implements HasMedia
     use InteractsWithMedia;
     protected $table = 'properties';
 
-    protected $fillable = ['keywords', 'name', 'meta_description' , 'price' , 'property_type' ,  'description' , 'full_address', 'bedrooms_count' , 'bathrooms_count' , 'living_area' ];
+    protected $fillable = ['keywords', 'name', 'meta_description' , 'price' , 'property_type' ,  'description' , 'full_address', 'bedrooms_count' , 'bathrooms_count' , 'living_area' ,'categories_id' ];
    public function getImageAtr(){
        return $this->getMedia('property-img')->first;
    }

@@ -34,8 +34,7 @@ Route::group(
         Route::get( '/downloads/{id}', [ Dashboard\PropertyController::class, 'download' ] );
         Route::get( '/downloads', [ Dashboard\PropertyController::class, 'downloads'] );
         Route::resource( '/properties',  Dashboard\PropertyController::class);
-//        Route::post('/properties-upload-img', 'Dashboard\PropertyController@uploadImg')
-//             ->name('properties.upload.img');
+        Route::resource('/categories', Dashboard\CategoryController::class);
 
     }
 );

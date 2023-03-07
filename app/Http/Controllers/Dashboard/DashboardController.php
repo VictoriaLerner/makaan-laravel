@@ -13,4 +13,8 @@ class DashboardController extends Controller {
         return view('dashboard.pages.index');
 
     }
+
+
+
+
 }
